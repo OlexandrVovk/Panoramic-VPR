@@ -1,0 +1,30 @@
+[project]
+name = "panoramic-vpr"
+version = "0.1.0"
+description = "Panoramic Visual Place Recognition using Hyperbolic Space Descriptors"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "torchvision>=0.15",
+    "opencv-python>=4.8",
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "tqdm>=4.65",
+    "faiss-cpu>=1.7",
+]
+
+[project.optional-dependencies]
+gpu = ["faiss-gpu>=1.7"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+pvpr-build = "panoramic_vpr.cli.build_database:main"
+pvpr-retrieve = "panoramic_vpr.cli.retrieve:main"
+pvpr-evaluate = "panoramic_vpr.cli.evaluate:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[tool.setuptools.packages.find]
+where = ["src"]
